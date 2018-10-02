@@ -1,0 +1,4 @@
+[local_dev]
+messagemedia.api ansible_ssh_user=vagrant env=local_dev
+[some_remote_host]
+hostname ansible_ssh_user=ubuntu env=some_host

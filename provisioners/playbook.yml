@@ -1,0 +1,12 @@
+---
+- hosts: all
+  user: vagrant
+  become: yes
+
+  roles:
+    - common
+    - add_ppas
+    - webserver
+    - php7
+    - database
+    

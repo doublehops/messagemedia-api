@@ -1,0 +1,11 @@
+.git
+.gitignore
+.sql
+vendor
+provisioners
+Vagrantfile
+.vagrant
+dev/debug
+runtime
+assets
+common/config/main-local.php

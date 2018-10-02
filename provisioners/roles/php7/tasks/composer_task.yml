@@ -1,0 +1,23 @@
+
+  - name: PHP | Check if Composer is installed.
+    stat: "path={{ composer_path }}"
+    register: composer_bin
+
+  - name: PHP | Retrieve Composer installer
+    get_url:
+      url: https://getcomposer.org/installer
+      dest: /tmp/composer-installer.php
+      mode: 0755
+    when: not composer_bin.stat.exists
+
+  - name: PHP | Run Composer installer
+    command: >
+      php composer-installer.php
+      chdir=/tmp
+    when: not composer_bin.stat.exists
+
+  - name: PHP | Move Composer into globally-accessible location.
+    shell: >
+      mv /tmp/composer.phar {{ composer_path }}
+      creates={{ composer_path }}
+    when: not composer_bin.stat.exists
