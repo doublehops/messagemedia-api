@@ -79,10 +79,10 @@ $params = $_REQUEST;
 
 $cont = new WordfinderController;
 
-$exp = $params['exp'] ?? null;
+$exp = str_replace('/wordfinder/', '', $_SERVER['REQUEST_URI']) ?? null;
 
 if (!$exp) {
-    $cont->sendResponse(['message' => 'parameter `n` not received'], 422);
+    $cont->sendResponse(['message' => 'Expression not received'], 422);
 }
 
 $value = $cont->findWords($exp);
